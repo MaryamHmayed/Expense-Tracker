@@ -14,6 +14,7 @@ function addTransaction(e){
   let type = document.getElementById('type').value;
   let name = document.getElementById('name').value;
   let amount = document.getElementById('amount').value;
+  
 
 
   if ( name.length > 0 && amount > 0) {
@@ -26,12 +27,13 @@ function addTransaction(e){
     transactions.push(transaction);
     
     localStorage.setItem('transactions', JSON.stringify(transactions));
-    showTransactions();
    
+    
   }
+  showTransactions();
   document.getElementById('add').reset();
- 
   updateBalance()
+
 }
 const showTransactions = () => {
   const transactionTable = document.getElementById('transactionTable');
@@ -60,18 +62,27 @@ const deleteTransaction = (id) => {
     showTransactions();
     updateBalance();
   }
+l
 
 
-  const updateBalance = () => {
+const updateBalance = () => {
     let balance = 0;
-  
+    let total_incomes= doucment.getElementById("incomes").value
+    let  total_expenses= doucment.getElementById("expenses").value
+       
+    
     transactions.forEach((transaction) => {
       if (transaction.type === "income") {
         balance += Number(transaction.amount);
+        total_incomes += transaction.amount
       } else if (transaction.type === "expense") {
-        balance -= transaction.amount;
+        balance -= Number(transaction.amount);
+        total_expenses += transaction.amount;
       }
     });
-  
-    document.getElementById('balance').textContent = balance;
+
+
+    total_expenses.innerText=total_expenses;
+    total_incomes.innerText=total_incomes;
+    document.getElementById('balance').innerText = balance;
   }
