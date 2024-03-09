@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense-Tracker</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header>
+    <h1>EXPENSE TRACKER</h1>
+    <h2>BALANCE:
+        <span id="balance"></span>
+        <span id="currency"></span>
+    </h2>
+    <div>
+        <h3>Income: <span id="income"></span></h3>
+        <h3>Expenses: <span id="expenses"></span></h3>
+    </div>
+    
+    </header>
+    <form class="form-container">
+        <label for="Transcation type:">Transcation type:<label>
+        <select id="type" name="Transcation">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+        </select>
+        <label for="name"></label>
+        <label for="amount"></label>
+        <button type="submit" id="add" class="saveButton">Add</button>
+    </form>
+    <div class="content">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody id="transactionTable"></tbody>
+        </table>
+      </div>
+
+
+    
+
+
+
+
+
+
+    <script src="./scripts/index,js"></script>
+</body>
+</html>
