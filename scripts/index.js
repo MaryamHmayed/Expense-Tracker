@@ -27,11 +27,11 @@ function addTransaction(e){
     
     localStorage.setItem('transactions', JSON.stringify(transactions));
     showTransactions();
-    console.log(transactions)
+   
   }
   document.getElementById('add').reset();
  
-  /*updateBalance();*/
+  updateBalance()
 }
 const showTransactions = () => {
   const transactionTable = document.getElementById('transactionTable');
@@ -47,6 +47,31 @@ const showTransactions = () => {
           </tr>
       `;
   }
-
-
 }
+const deleteTransaction = (id) => {
+    for (let i = 0; i < transactions.length; i++) {
+      if (transactions[i].id == id) {
+        transactions.splice(i, 1);
+      }
+    }
+  
+    // localStorage
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+    showTransactions();
+    updateBalance();
+  }
+
+
+  const updateBalance = () => {
+    let balance = 0;
+  
+    transactions.forEach((transaction) => {
+      if (transaction.type === "income") {
+        balance += Number(transaction.amount);
+      } else if (transaction.type === "expense") {
+        balance -= transaction.amount;
+      }
+    });
+  
+    document.getElementById('balance').textContent = balance;
+  }
