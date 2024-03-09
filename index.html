@@ -19,24 +19,24 @@
     </div>
     
     </header>
-    <form class="form-container">
+    <form class="form-container" id="Transcation-form">
         <label for="Transcation type:">Transcation type:<label>
         <select id="type" name="Transcation">
             <option value="expense">Expense</option>
             <option value="income">Income</option>
         </select>
-        <label for="name"></label>
-        <label for="amount"></label>
+        <label>name<input id="name"></label>
+        <label>amount<input id="amount"></label>
         <button type="submit" id="add" class="saveButton">Add</button>
     </form>
     <div class="content">
         <table class="table">
           <thead>
             <tr>
-              <th>Type</th>
-              <th>Name</th>
-              <th>Amount</th>
-              <th>Options</th>
+              <th>type</th>
+              <th>name</th>
+              <th>amount</th>
+              <th>options</th>
             </tr>
           </thead>
           <tbody id="transactionTable"></tbody>
@@ -51,6 +51,6 @@
 
 
 
-    <script src="./scripts/index,js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
