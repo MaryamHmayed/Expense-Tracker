@@ -5,9 +5,12 @@
     border: 0;
 
     font-family: "Poppins", sans-serif;
+  
+   
 }
 body{
-    background-color:#031927;
+    background-color: #031927;
+    
     text-align: center;
 }
 h1{ color: #BA1200
@@ -54,6 +57,7 @@ input,
 select {
   width: 130px;
   margin-left: 10px;
+  background-color:bisque;
 }
 
 table {

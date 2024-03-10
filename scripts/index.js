@@ -1,8 +1,6 @@
 const add = document.getElementById('Transcation-form')
 
-
 add.addEventListener('submit', addTransaction);
-
 
 const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
@@ -10,12 +8,9 @@ const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 function addTransaction(e){
     e.preventDefault();
 
-
   let type = document.getElementById('type').value;
   let name = document.getElementById('name').value;
   let amount = document.getElementById('amount').value;
-  
-
 
   if ( name.length > 0 && amount > 0) {
     const transaction = {
@@ -27,12 +22,11 @@ function addTransaction(e){
     transactions.push(transaction);
     
     localStorage.setItem('transactions', JSON.stringify(transactions));
-   
     
   }
   showTransactions();
-  document.getElementById('add').reset();
   updateBalance()
+  add.reset();
 
 }
 const showTransactions = () => {
@@ -57,32 +51,57 @@ const deleteTransaction = (id) => {
       }
     }
   
-    // localStorage
+    
     localStorage.setItem('transactions', JSON.stringify(transactions));
     showTransactions();
     updateBalance();
   }
-l
+
 
 
 const updateBalance = () => {
     let balance = 0;
-    let total_incomes= doucment.getElementById("incomes").value
-    let  total_expenses= doucment.getElementById("expenses").value
+    let total_incomes=0;
+    let total_expenses=0;
        
-    
     transactions.forEach((transaction) => {
       if (transaction.type === "income") {
         balance += Number(transaction.amount);
-        total_incomes += transaction.amount
+        total_incomes+=Number(transaction.amount)
+       
       } else if (transaction.type === "expense") {
         balance -= Number(transaction.amount);
-        total_expenses += transaction.amount;
+        total_expenses+=Number(transaction.amount)
+
+        ;
       }
     });
+    document.getElementById('incomes').innerText=total_incomes
+    document.getElementById('expenses').innerText=total_expenses
 
 
-    total_expenses.innerText=total_expenses;
-    total_incomes.innerText=total_incomes;
+    console.log(balance)
     document.getElementById('balance').innerText = balance;
   }
+
+
+  const addCurrency = async ()=> {
+    
+    const { data } = await axios.get("https://crowded-cyan-wildebeest.cyclic.app/students/available ");
+    console.log(data);
+    const key= "code"
+     const values=[]
+     data.forEach(obj => {
+        values.push(obj[key]);
+      });
+      
+    const currency=document.getElementById('user-currency')
+    values.forEach(function(value){
+      let option= document.createElement('option')
+      option.value=value
+      
+      currency.appendChild(option)
+
+
+    })}
+addCurrency()
