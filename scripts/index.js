@@ -87,7 +87,7 @@ const updateBalance = () => {
 
   const addCurrency = async ()=> {
     
-    const { data } = await axios.get("https://crowded-cyan-wildebeest.cyclic.app/students/available ");
+    const { data } = await axios.get("https://rich-erin-angler-hem.cyclic.app/students/available ");
     console.log(data);
     const key= "code"
      const values=[]
@@ -99,9 +99,13 @@ const updateBalance = () => {
     values.forEach(function(value){
       let option= document.createElement('option')
       option.value=value
-      
+      option.text=value
       currency.appendChild(option)
 
 
     })}
 addCurrency()
+
+
+
+convertCurrency
