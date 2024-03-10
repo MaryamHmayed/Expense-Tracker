@@ -101,11 +101,29 @@ const updateBalance = () => {
       option.value=value
       option.text=value
       currency.appendChild(option)
+    
 
 
     })}
 addCurrency()
 
 
+const body = {
+  from: ["AED","EURO", "LBP"],
+  to: "USD",
+  amount: balance
+};
 
-convertCurrency
+axios.post('https://rich-erin-angler-hem.cyclic.app/students/convert', body)
+  .then(response => {
+    console.log('Converted amount:', response.body.convertedAmount);
+  })
+  .catch(error => {
+    console.error('Error converting currency:', error);
+  });
+
+
+
+
+
+
