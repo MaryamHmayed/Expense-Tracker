@@ -87,7 +87,7 @@ const updateBalance = () => {
 
   const addCurrency = async ()=> {
     
-    const { data } = await axios.get("https://rich-erin-angler-hem.cyclic.app/students/available ");
+    const { data } = await axios.get("https://dull-pink-sockeye-tie.cyclic.app/students/available ");
     console.log(data);
     const key= "code"
      const values=[]
@@ -107,16 +107,16 @@ const updateBalance = () => {
     })}
 addCurrency()
 
-
+balance=parseFloat(document.getElementById('balance').value)
 const body = {
   from: ["AED","EURO", "LBP"],
   to: "USD",
   amount: balance
 };
 
-axios.post('https://rich-erin-angler-hem.cyclic.app/students/convert', body)
+axios.post('https://dull-pink-sockeye-tie.cyclic.app/students/convert', body)
   .then(response => {
-    console.log('Converted amount:', response.body.convertedAmount);
+    console.log('Converted amount:', response.data.convertedAmount);
   })
   .catch(error => {
     console.error('Error converting currency:', error);
